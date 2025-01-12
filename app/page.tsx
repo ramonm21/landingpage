@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Play, Music, Wand2, Keyboard, ArrowRight, Sparkles, MessageSquare, Lightbulb, BookOpen, Piano, Twitter } from 'lucide-react'
+import { Play, Music, Wand2, Keyboard, ArrowRight, Sparkles, MessageSquare, Lightbulb, BookOpen, Piano } from 'lucide-react'
+import { XLogo } from '@/components/ui/x-logo'
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
@@ -31,8 +32,8 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex items-center gap-4">
-              <Button variant="ghost" className="hidden sm:inline-flex">About</Button>
-              <Button className="gradient-button">Join Waitlist</Button>
+              <Button variant="ghost" className="hidden sm:inline-flex rounded-xl">About</Button>
+              <Button className="gradient-button rounded-xl">Join Waitlist</Button>
             </div>
           </div>
         </div>
@@ -55,9 +56,9 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 leading-tight"
           >
-            Compose with AI.
+            Compose and learn with AI.
             <br className="hidden sm:inline" />
-            No theory required.
+            No music theory required.
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -65,8 +66,8 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto px-4 sm:px-0"
           >
-            Transform your musical ideas into complete compositions with AI-powered assistance. 
-            Just play and let PianoLabs do the rest.
+            Transform your musical ideas into compositions through human language.
+            Learn piano and music theory with your personal AI-powered teacher.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -74,8 +75,8 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="max-w-md mx-auto flex flex-col sm:flex-row gap-3 mb-8 sm:mb-16 px-4 sm:px-0"
           >
-            <Input placeholder="Enter your email" type="email" className="h-12 bg-white/5 border-white/5 focus:border-white/10 focus:ring-1 focus:ring-white/10 rounded-lg text-white placeholder:text-white/40" />
-            <Button className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-lg transition-colors whitespace-nowrap">
+            <Input placeholder="Enter your email" type="email" className="h-12 bg-white/5 border-white/5 focus:border-white/10 focus:ring-1 focus:ring-white/10 rounded-xl text-white placeholder:text-white/40" />
+            <Button className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-xl transition-colors whitespace-nowrap">
               Join Waitlist
             </Button>
           </motion.div>
@@ -86,10 +87,10 @@ export default function Home() {
           >
             <Button 
               variant="outline" 
-              className="mb-16"
+              className="mb-16 rounded-xl"
               onClick={() => window.open('https://x.com/pianolabs_ai', '_blank')}
             >
-              <Twitter className="w-4 h-4 mr-2" />
+              <XLogo className="w-4 h-4 mr-2" />
               Follow Development Journey
             </Button>
           </motion.div>
@@ -155,14 +156,14 @@ export default function Home() {
           >
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-                Revolutionizing Music Creation
+                Bring your musical ideas to life
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8">
-                PianoLabs combines cutting-edge AI technology with intuitive design to empower musicians of all levels. 
-                Whether you're a beginner or a seasoned pro, our platform adapts to your skill set, 
-                helping you create professional-quality music with ease.
+                PianoLabs understand your musical ideas when you describe them in natural language.
+                As you compose, you'll learn piano and music theory naturally, 
+                with personalized guidance from your AI teacher.    
               </p>
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="rounded-xl">
                 Learn More
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -220,9 +221,9 @@ export default function Home() {
               className="group p-6 sm:p-8 bg-secondary/50 backdrop-blur-sm rounded-xl border border-border hover:border-primary/50 transition-all"
             >
               <Wand2 className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg sm:text-xl font-bold mb-2">AI-Powered Creativity</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-2">No More Creative Blocks</h3>
               <p className="text-sm sm:text-base text-muted-foreground">
-                Let artificial intelligence enhance your creative process with 
+                Simply ask "What's next?" when you're stuck, and let AI provide
                 intelligent suggestions and musical variations.
               </p>
             </motion.div>
@@ -257,7 +258,7 @@ export default function Home() {
               <div className="p-6 h-full flex flex-col">
                 <div className="flex items-center gap-2 mb-4">
                   <MessageSquare className="w-5 h-5 text-primary" />
-                  <span className="text-sm text-primary">AI Music Theory Assistant</span>
+                  <span className="text-sm text-primary">Your Personal Assistant</span>
                 </div>
                 <div className="flex-1 overflow-auto space-y-4">
                   <div className="bg-white/5 rounded-lg p-4">
@@ -273,8 +274,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-4 flex gap-2">
-                  <Input placeholder="Ask about music theory..." className="bg-white/5 border-0" />
-                  <Button variant="secondary" size="icon">
+                  <Input placeholder="Ask about music theory..." className="bg-white/5 border-0 rounded-xl" />
+                  <Button variant="secondary" size="icon" className="rounded-xl">
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </div>
@@ -335,9 +336,9 @@ export default function Home() {
               className="group p-6 bg-black/50 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all"
             >
               <Lightbulb className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold mb-2">Smart Suggestions</h3>
+              <h3 className="text-xl font-bold mb-2">Live Chord Display</h3>
               <p className="text-muted-foreground">
-                Get intelligent chord progressions and melody ideas based on your playing style and preferences.
+                Instantly see the name of any chord you play in real-time on your interactive keyboard.
               </p>
             </motion.div>
 
@@ -348,9 +349,9 @@ export default function Home() {
               className="group p-6 bg-black/50 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all lg:-mt-12"
             >
               <BookOpen className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold mb-2">Theory Assistant</h3>
+              <h3 className="text-xl font-bold mb-2">Interactive Chord Sequencer</h3>
               <p className="text-muted-foreground">
-                Learn music theory concepts through natural conversation and interactive demonstrations.
+                Arrange suggested chords into your perfect progression. Export as MIDI and bring your composition into any DAW.
               </p>
             </motion.div>
 
@@ -361,9 +362,9 @@ export default function Home() {
               className="group p-6 bg-black/50 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all lg:mt-12"
             >
               <Piano className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold mb-2">Visual Learning</h3>
+              <h3 className="text-xl font-bold mb-2">Context-Aware Suggestions</h3>
               <p className="text-muted-foreground">
-                See chord shapes and progressions visualized on an interactive piano keyboard in real-time.
+                Get Advice from AI about what chords to play next, based on the context of your current composition.
               </p>
             </motion.div>
           </motion.div>
@@ -473,8 +474,8 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-md mx-auto flex flex-col sm:flex-row gap-2 px-4 sm:px-0"
           >
-            <Input placeholder="Enter your email" type="email" className="h-12 bg-white/5 border-white/5 focus:border-white/10 focus:ring-1 focus:ring-white/10 rounded-lg text-white placeholder:text-white/40" />
-            <Button className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-lg transition-colors whitespace-nowrap">
+            <Input placeholder="Enter your email" type="email" className="h-12 bg-white/5 border-white/5 focus:border-white/10 focus:ring-1 focus:ring-white/10 rounded-xl text-white placeholder:text-white/40" />
+            <Button className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-xl transition-colors whitespace-nowrap">
               Join Waitlist
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
