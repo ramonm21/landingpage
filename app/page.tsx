@@ -46,7 +46,7 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-[1400px]">
         {/* Navbar */}
-        <nav className="fixed top-0 inset-x-0 z-50 h-16 flex items-center border-b border-white/5 bg-black/20 backdrop-blur-xl">
+        <nav className="fixed top-0 inset-x-0 z-50 h-16 flex items-center border-b border-white/5 bg-transparent backdrop-blur-sm">
           <div className="w-full max-w-[1400px] mx-auto px-6">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
@@ -64,7 +64,7 @@ export default function Home() {
         </nav>
 
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center py-20 px-6">
+        <section className="relative min-h-[90vh] flex items-center justify-center py-12 px-6">
           <div className="w-full relative z-10">
             <div className="max-w-4xl mx-auto text-center mb-10">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 relative">
@@ -117,8 +117,7 @@ export default function Home() {
         </section>
 
         {/* Product Preview Section */}
-        <section className="py-16 relative px-6">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+        <section className="py-8 relative px-6">
           <div className="relative z-10">
             <motion.div 
               style={{ opacity, scale }}
@@ -131,7 +130,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden border border-border"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
                 <Image
                   src="/placeholder.svg?height=1200&width=2400&text=&fontsize=0&bg=0f172a&colors[]=6366f1,a855f7,ec4899"
                   alt="PianoLabs Interface Preview"
@@ -153,7 +152,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden border border-border ml-0 sm:ml-[5%] md:ml-[10%]"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
                 <Image
                   src="/placeholder.svg?height=1200&width=2400&text=&fontsize=0&bg=18181b&colors[]=4ade80,22d3ee,60a5fa"
                   alt="Chord Progression Interface Preview"
@@ -196,9 +195,9 @@ export default function Home() {
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
-                className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden border border-border"
+                className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden border border-border mb-8"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
                 <Image
                   src="/placeholder.svg?height=1200&width=2400&text=&fontsize=0&bg=1e1b4b&colors[]=c084fc,f472b6,fb7185"
                   alt="AI Composition Assistant Preview"
@@ -217,25 +216,24 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-16 relative px-6">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+        <section className="py-8 relative px-6">
           <div className="relative z-10">
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {/* Feature 1 */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="group p-8 bg-black/50 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
+                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <PianoKeysIcon className="w-12 h-12 text-white mb-6 relative z-10" />
-                <h3 className="text-xl font-bold mb-3 relative z-10">Smart Chord Suggestions</h3>
-                <p className="text-base text-muted-foreground relative z-10">
+                <PianoKeysIcon className="w-10 h-10 text-white mb-4 relative z-10" />
+                <h3 className="text-lg font-bold mb-2 relative z-10">Smart Chord Suggestions</h3>
+                <p className="text-sm text-muted-foreground relative z-10">
                   Get intelligent chord recommendations based on what you play live.
                 </p>
               </motion.div>
@@ -244,12 +242,12 @@ export default function Home() {
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="group p-8 bg-black/50 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
+                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <LightbulbIcon className="w-12 h-12 text-white mb-6 relative z-10" />
-                <h3 className="text-xl font-bold mb-3 relative z-10">No More Creative Blocks</h3>
-                <p className="text-base text-muted-foreground relative z-10">
+                <LightbulbIcon className="w-10 h-10 text-white mb-4 relative z-10" />
+                <h3 className="text-lg font-bold mb-2 relative z-10">No More Creative Blocks</h3>
+                <p className="text-sm text-muted-foreground relative z-10">
                   Simply ask "What's next?" when you're stuck, and let AI provide
                   intelligent suggestions and musical variations.
                 </p>
@@ -259,12 +257,12 @@ export default function Home() {
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="group p-8 bg-black/50 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
+                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Music className="w-12 h-12 text-white mb-6 relative z-10" />
-                <h3 className="text-xl font-bold mb-3 relative z-10">Live Chord Display</h3>
-                <p className="text-base text-muted-foreground relative z-10">
+                <Music className="w-10 h-10 text-white mb-4 relative z-10" />
+                <h3 className="text-lg font-bold mb-2 relative z-10">Live Chord Display</h3>
+                <p className="text-sm text-muted-foreground relative z-10">
                   See exactly how to play each chord with our interactive keyboard 
                   visualization and real-time feedback.
                 </p>
@@ -274,12 +272,12 @@ export default function Home() {
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="group p-8 bg-black/50 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
+                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <VisualIcon className="w-12 h-12 text-white mb-6 relative z-10" />
-                <h3 className="text-xl font-bold mb-3 relative z-10">Visual Learning</h3>
-                <p className="text-base text-muted-foreground relative z-10">
+                <VisualIcon className="w-10 h-10 text-white mb-4 relative z-10" />
+                <h3 className="text-lg font-bold mb-2 relative z-10">Visual Learning</h3>
+                <p className="text-sm text-muted-foreground relative z-10">
                   See chord shapes and progressions on an interactive keyboard 
                   visualization and real-time feedback.
                 </p>
@@ -289,12 +287,12 @@ export default function Home() {
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="group p-8 bg-black/50 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
+                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <ColumnsIcon className="w-12 h-12 text-white mb-6 relative z-10" />
-                <h3 className="text-xl font-bold mb-3 relative z-10">Interactive Chord Sequencer</h3>
-                <p className="text-base text-muted-foreground relative z-10">
+                <ColumnsIcon className="w-10 h-10 text-white mb-4 relative z-10" />
+                <h3 className="text-lg font-bold mb-2 relative z-10">Interactive Chord Sequencer</h3>
+                <p className="text-sm text-muted-foreground relative z-10">
                   Arrange suggested chords into your perfect progression. Export as MIDI and bring your composition into any DAW.
                 </p>
               </motion.div>
@@ -303,12 +301,12 @@ export default function Home() {
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="group p-8 bg-black/50 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
+                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Wand2 className="w-12 h-12 text-white mb-6 relative z-10" />
-                <h3 className="text-xl font-bold mb-3 relative z-10">Context-Aware Suggestions</h3>
-                <p className="text-base text-muted-foreground relative z-10">
+                <Wand2 className="w-10 h-10 text-white mb-4 relative z-10" />
+                <h3 className="text-lg font-bold mb-2 relative z-10">Context-Aware Suggestions</h3>
+                <p className="text-sm text-muted-foreground relative z-10">
                   Get Advice from AI about what chords to play next, based on the context of your current composition.
                 </p>
               </motion.div>
@@ -318,7 +316,6 @@ export default function Home() {
 
         {/* Interactive Learning Section */}
         <section className="py-16 relative px-6">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
           <div className="relative z-10">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
               <ChatPreview />
