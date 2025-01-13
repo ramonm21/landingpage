@@ -2,17 +2,18 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Play, Music, Wand2, ArrowRight, Sparkles, MessageSquare, BookOpen } from 'lucide-react'
+import { Play, Music, Wand2, ArrowRight, Sparkles, MessageSquare, BookOpen, Check } from 'lucide-react'
 import { XLogo } from '@/components/ui/x-logo'
 import { VisualIcon } from '@/components/ui/visual-icon'
 import { PianoIcon } from '@/components/ui/piano-icon'
 import { PianoKeysIcon } from '@/components/ui/piano-keys-icon'
 import { LightbulbIcon } from '@/components/ui/lightbulb-icon'
 import { ColumnsIcon } from '@/components/ui/columns-icon'
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { ChatPreview } from "@/components/chat-preview"
 import "@/styles/embla.css"
 
@@ -24,20 +25,42 @@ export default function Home() {
   })
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
+  const [showAlert, setShowAlert] = useState(false)
+
+  const handleWaitlistClick = () => {
+    setShowAlert(true)
+    setTimeout(() => setShowAlert(false), 3000) // Hide after 3 seconds
+  }
 
   return (
     <main className="relative min-h-screen bg-black">
+      {/* Alert */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: showAlert ? 1 : 0, y: showAlert ? 0 : 20 }}
+        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-xl px-4"
+      >
+        <Alert className="rounded-xl bg-black/90 border border-white/10 backdrop-blur-sm text-white">
+          <Check className="h-4 w-4" />
+          <AlertTitle className="text-white">Awesome! You're in!</AlertTitle>
+          <AlertDescription className="text-white/80">
+            Feel free to follow my X for live development updates
+          </AlertDescription>
+        </Alert>
+      </motion.div>
+
       {/* Background Image - Fixed */}
       <div 
         className="fixed inset-0 z-0"
         style={{
-          backgroundImage: 'url(/gradient-bg.jpg)',
+          backgroundImage: `url('/bg-dark.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: 'blur(25px) brightness(0.9)',
-          transform: 'scale(1.1)'
+          backgroundRepeat: 'no-repeat',
         }}
-      />
+      >
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      </div>
 
       {/* Gradient Overlays */}
       <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/10 via-black/50 to-black pointer-events-none" />
@@ -64,28 +87,36 @@ export default function Home() {
         </nav>
 
         {/* Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center justify-center py-12 px-6">
+        <section className="relative min-h-[90vh] flex items-center justify-center py-24 sm:py-32 px-6">
           <div className="w-full relative z-10">
             <div className="max-w-4xl mx-auto text-center mb-10">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 relative">
-                <span className="relative inline-block text-white">
-                  Compose and learn with AI.
-                  <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-400 to-violet-500 blur-2xl opacity-20" />
-                </span>
-                <br />
-                <span className="relative text-white">
-                  No music theory required.
-                  <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-400 to-violet-500 blur-xl opacity-20" />
-                </span>
-              </h1>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="max-w-3xl mx-auto text-center mb-8 relative"
+              >
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-3xl scale-110" />
+                <div className="relative">
+                  <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl mb-4 tracking-tight relative">
+                    <span className="relative inline-block">
+                      Learn piano with<br className="hidden sm:block" /> natural&nbsp;language
+                      <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-violet-500 to-fuchsia-500 blur-[50px] opacity-30 scale-150" />
+                      <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-violet-400 to-fuchsia-400 blur-xl opacity-10" />
+                    </span>
+                  </h1>
+                  <p className="text-xl sm:text-2xl text-white/60 max-w-2xl mx-auto">
+                    Your AI-assisted theory teacher<br className="hidden sm:block" /> and&nbsp;composer
+                  </p>
+                </div>
+              </motion.div>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto px-4 sm:px-0"
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-xl sm:text-2xl text-white/60 max-w-2xl mx-auto mb-8"
               >
-                Transform your musical ideas into compositions through human language.
-                Learn piano and music theory with your personal AI-powered teacher.
+                Transform your musical ideas into compositions through human language. Learn piano and music theory with your personal AI-powered teacher.
               </motion.p>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -94,7 +125,7 @@ export default function Home() {
                 className="max-w-md mx-auto flex flex-col sm:flex-row gap-3 mb-8 sm:mb-16 px-4 sm:px-0"
               >
                 <Input placeholder="Enter your email" type="email" className="h-12 bg-white/5 border-white/5 focus:border-white/10 focus:ring-1 focus:ring-white/10 rounded-xl text-white placeholder:text-white/40" />
-                <Button className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-xl transition-colors whitespace-nowrap">
+                <Button onClick={handleWaitlistClick} className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-xl transition-colors whitespace-nowrap">
                   Join Waitlist
                 </Button>
               </motion.div>
@@ -116,100 +147,58 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Product Preview Section */}
+        {/* Main Preview Section */}
         <section className="py-8 relative px-6">
           <div className="relative z-10">
             <motion.div 
-              style={{ opacity, scale }}
-              className="grid gap-16"
+              style={{
+                opacity: useTransform(
+                  scrollYProgress,
+                  [0, 0.15],
+                  [0, 1]
+                ),
+                filter: useTransform(
+                  scrollYProgress,
+                  [0, 0.15],
+                  ["brightness(0.3)", "brightness(1)"]
+                )
+              }}
+              transition={{ 
+                duration: 2.5,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden border border-white/5"
             >
-              {/* First Preview */}
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
+              <Image
+                src="/placeholder.svg?height=1200&width=2400&text=&fontsize=0&bg=0f172a&colors[]=6366f1,a855f7,ec4899"
+                alt="PianoLabs Interface Preview"
+                fill
+                className="object-cover"
+              />
               <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden border border-border"
+                style={{
+                  opacity: useTransform(
+                    scrollYProgress,
+                    [0.05, 0.15],
+                    [0, 1]
+                  ),
+                  y: useTransform(
+                    scrollYProgress,
+                    [0.05, 0.15],
+                    [20, 0]
+                  )
+                }}
+                transition={{ 
+                  duration: 2.5,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                className="absolute bottom-6 md:bottom-8 left-6 md:left-8 max-w-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
-                <Image
-                  src="/placeholder.svg?height=1200&width=2400&text=&fontsize=0&bg=0f172a&colors[]=6366f1,a855f7,ec4899"
-                  alt="PianoLabs Interface Preview"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 max-w-lg">
-                  <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">Intuitive Composition Interface</h2>
-                  <p className="text-sm sm:text-base text-muted-foreground">
-                    A powerful yet simple interface that lets you focus on creativity while AI handles the complexity.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Second Preview - Offset for visual interest */}
-              <motion.div 
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden border border-border ml-0 sm:ml-[5%] md:ml-[10%]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
-                <Image
-                  src="/placeholder.svg?height=1200&width=2400&text=&fontsize=0&bg=18181b&colors[]=4ade80,22d3ee,60a5fa"
-                  alt="Chord Progression Interface Preview"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 max-w-lg text-right">
-                  <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">Smart Chord Progression</h2>
-                  <p className="text-sm sm:text-base text-muted-foreground">
-                    Let AI suggest the perfect chords for your melody, with visual guidance on how to play them.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* New Text Section with animation */}
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="relative py-16 sm:py-24 px-4"
-              >
-                <div className="max-w-3xl mx-auto text-center">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-                    Bring your musical ideas to life
-                  </h2>
-                  <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8">
-                    PianoLabs understand your musical ideas when you describe them in natural language.
-                    As you compose, you'll learn piano and music theory naturally, 
-                    with personalized guidance from your AI teacher.    
-                  </p>
-                  <Button variant="outline" size="lg" className="rounded-xl">
-                    Learn More
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
-              </motion.div>
-
-              {/* Third Preview */}
-              <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden border border-border mb-8"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
-                <Image
-                  src="/placeholder.svg?height=1200&width=2400&text=&fontsize=0&bg=1e1b4b&colors[]=c084fc,f472b6,fb7185"
-                  alt="AI Composition Assistant Preview"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 max-w-lg">
-                  <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">AI Composition Assistant</h2>
-                  <p className="text-sm sm:text-base text-muted-foreground">
-                    Direct your music with natural language. Tell the AI exactly what you want to achieve.
-                  </p>
-                </div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Intuitive Composition Interface</h2>
+                <p className="text-base md:text-lg text-muted-foreground">
+                  A powerful yet simple interface that lets you focus on creativity while AI handles the complexity.
+                </p>
               </motion.div>
             </motion.div>
           </div>
@@ -454,7 +443,7 @@ export default function Home() {
               className="max-w-md mx-auto flex flex-col sm:flex-row gap-2 px-4 sm:px-0"
             >
               <Input placeholder="Enter your email" type="email" className="h-12 bg-white/5 border-white/5 focus:border-white/10 focus:ring-1 focus:ring-white/10 rounded-xl text-white placeholder:text-white/40" />
-              <Button className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-xl transition-colors whitespace-nowrap">
+              <Button onClick={handleWaitlistClick} className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-xl transition-colors whitespace-nowrap">
                 Join Waitlist
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
