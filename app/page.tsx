@@ -79,8 +79,12 @@ export default function Home() {
                 </Link>
               </div>
               <div className="flex items-center gap-4">
-                <Button variant="ghost" className="hidden sm:inline-flex rounded-xl">About</Button>
-                <Button className="gradient-button rounded-xl">Join Waitlist</Button>
+                <Button variant="ghost" className="hidden sm:inline-flex rounded-xl">Compose</Button>
+                <Button variant="ghost" className="hidden sm:inline-flex rounded-xl">Learn</Button>
+                <Button variant="ghost" className="hidden sm:inline-flex rounded-xl">Updates</Button>
+                <Button onClick={handleWaitlistClick} className="bg-white text-black hover:bg-white/90 rounded-xl transition-colors">
+                  Join Waitlist
+                </Button>
               </div>
             </div>
           </div>
@@ -452,24 +456,75 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="py-8 relative px-6">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-          <div className="relative z-10">
-            <div className="flex flex-col sm:flex-row justify-between items-center">
-              <div className="flex items-center gap-2 text-xl font-bold mb-4 sm:mb-0">
-                <Sparkles className="w-6 h-6 text-primary" />
-                PianoLabs
+        <footer className="relative z-10 border-t border-white/5 py-16 mt-32">
+          <div className="max-w-[1400px] mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-x-4 gap-y-8">
+              {/* Logo and description */}
+              <div className="md:col-span-6">
+                <Link href="/" className="text-xl font-bold flex items-center gap-2 mb-4">
+                  <Sparkles className="w-6 h-6 text-primary" />
+                  PianoLabs
+                </Link>
+                <p className="text-white/60 max-w-md">
+                  Transform your musical ideas into compositions through natural language. Learn piano and music theory with your personal AI-powered teacher.
+                </p>
               </div>
-              <div className="flex gap-4 sm:gap-8">
-                <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  About
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Privacy
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Contact
-                </Link>
+              
+              {/* Navigation */}
+              <div className="md:col-span-2 md:text-right">
+                <h3 className="font-semibold mb-4 text-white">Product</h3>
+                <ul className="space-y-3">
+                  <li>
+                    <Link href="/compose" className="text-white/60 hover:text-white transition-colors cursor-pointer">
+                      Compose
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/learn" className="text-white/60 hover:text-white transition-colors cursor-pointer">
+                      Learn
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/updates" className="text-white/60 hover:text-white transition-colors cursor-pointer">
+                      Updates
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Legal */}
+              <div className="md:col-span-2 md:text-right">
+                <h3 className="font-semibold mb-4 text-white">Company</h3>
+                <ul className="space-y-3">
+                  <li>
+                    <Link href="/about" className="text-white/60 hover:text-white transition-colors cursor-pointer">
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/privacy" className="text-white/60 hover:text-white transition-colors cursor-pointer">
+                      Privacy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/terms" className="text-white/60 hover:text-white transition-colors cursor-pointer">
+                      Terms
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Social */}
+              <div className="md:col-span-2 md:text-right">
+                <h3 className="font-semibold mb-4 text-white">Follow</h3>
+                <ul className="space-y-3">
+                  <li>
+                    <Link href="https://twitter.com/ramonprz_" className="text-white/60 hover:text-white transition-colors cursor-pointer flex items-center gap-2 justify-end">
+                      <XLogo className="w-4 h-4" />
+                      Twitter
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
