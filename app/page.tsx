@@ -73,8 +73,7 @@ export default function Home() {
           <div className="w-full max-w-[1400px] mx-auto px-6">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
-                <Link href="/" className="text-xl font-bold flex items-center gap-2">
-                  <Sparkles className="w-6 h-6 text-primary" />
+                <Link href="/" className="text-xl font-bold">
                   PianoLabs
                 </Link>
               </div>
@@ -91,7 +90,7 @@ export default function Home() {
         </nav>
 
         {/* Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center justify-center py-24 sm:py-32 px-6">
+        <section className="relative min-h-[90vh] flex items-center justify-center pt-48 pb-16 px-6">
           <div className="w-full relative z-10">
             <div className="max-w-4xl mx-auto text-center mb-10">
               <motion.div
@@ -215,94 +214,85 @@ export default function Home() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1400px] mx-auto px-6"
             >
-              {/* Feature 1 */}
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <PianoKeysIcon className="w-10 h-10 text-white mb-4 relative z-10" />
-                <h3 className="text-lg font-bold mb-2 relative z-10">Smart Chord Suggestions</h3>
-                <p className="text-sm text-muted-foreground relative z-10">
+              {/* Smart Chord Suggestions */}
+              <div className="group relative bg-black/30 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:bg-black/40 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center">
+                    <PianoKeysIcon className="w-6 h-6 text-white/60" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">Smart Chord Suggestions</h3>
+                </div>
+                <p className="text-white/60 text-base leading-relaxed">
                   Get intelligent chord recommendations based on what you play live.
                 </p>
-              </motion.div>
+              </div>
 
-              {/* Feature 2 */}
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <LightbulbIcon className="w-10 h-10 text-white mb-4 relative z-10" />
-                <h3 className="text-lg font-bold mb-2 relative z-10">No More Creative Blocks</h3>
-                <p className="text-sm text-muted-foreground relative z-10">
-                  Simply ask "What's next?" when you're stuck, and let AI provide
-                  intelligent suggestions and musical variations.
+              {/* Music Theory Learning */}
+              <div className="group relative bg-black/30 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:bg-black/40 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center">
+                    <LightbulbIcon className="w-6 h-6 text-white/60" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">Music Theory Learning</h3>
+                </div>
+                <p className="text-white/60 text-base leading-relaxed">
+                  Learn music theory concepts through interactive lessons and real-time feedback.
                 </p>
-              </motion.div>
+              </div>
 
-              {/* Feature 3 */}
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Music className="w-10 h-10 text-white mb-4 relative z-10" />
-                <h3 className="text-lg font-bold mb-2 relative z-10">Live Chord Display</h3>
-                <p className="text-sm text-muted-foreground relative z-10">
-                  See exactly how to play each chord with our interactive keyboard 
-                  visualization and real-time feedback.
+              {/* Melody Generation */}
+              <div className="group relative bg-black/30 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:bg-black/40 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center">
+                    <Music className="w-6 h-6 text-white/60" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">Melody Generation</h3>
+                </div>
+                <p className="text-white/60 text-base leading-relaxed">
+                  Create unique melodies that complement your chord progressions.
                 </p>
-              </motion.div>
+              </div>
 
-              {/* Feature 4 */}
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <VisualIcon className="w-10 h-10 text-white mb-4 relative z-10" />
-                <h3 className="text-lg font-bold mb-2 relative z-10">Visual Learning</h3>
-                <p className="text-sm text-muted-foreground relative z-10">
-                  See chord shapes and progressions on an interactive keyboard 
-                  visualization and real-time feedback.
+              {/* Harmony Analysis */}
+              <div className="group relative bg-black/30 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:bg-black/40 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center">
+                    <VisualIcon className="w-6 h-6 text-white/60" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">Harmony Analysis</h3>
+                </div>
+                <p className="text-white/60 text-base leading-relaxed">
+                  Understand the theory behind your compositions with detailed harmonic analysis.
                 </p>
-              </motion.div>
+              </div>
 
-              {/* Feature 5 */}
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <ColumnsIcon className="w-10 h-10 text-white mb-4 relative z-10" />
-                <h3 className="text-lg font-bold mb-2 relative z-10">Interactive Chord Sequencer</h3>
-                <p className="text-sm text-muted-foreground relative z-10">
-                  Arrange suggested chords into your perfect progression. Export as MIDI and bring your composition into any DAW.
+              {/* Rhythm Patterns */}
+              <div className="group relative bg-black/30 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:bg-black/40 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center">
+                    <ColumnsIcon className="w-6 h-6 text-white/60" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">Rhythm Patterns</h3>
+                </div>
+                <p className="text-white/60 text-base leading-relaxed">
+                  Explore different rhythm patterns and learn how they affect your music.
                 </p>
-              </motion.div>
+              </div>
 
-              {/* Feature 6 */}
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="group p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 hover:border-primary/50 transition-all relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Wand2 className="w-10 h-10 text-white mb-4 relative z-10" />
-                <h3 className="text-lg font-bold mb-2 relative z-10">Context-Aware Suggestions</h3>
-                <p className="text-sm text-muted-foreground relative z-10">
-                  Get Advice from AI about what chords to play next, based on the context of your current composition.
+              {/* Song Structure */}
+              <div className="group relative bg-black/30 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:bg-black/40 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center">
+                    <Wand2 className="w-6 h-6 text-white/60" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">Song Structure</h3>
+                </div>
+                <p className="text-white/60 text-base leading-relaxed">
+                  Learn about song structure and how to arrange your compositions effectively.
                 </p>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -519,7 +509,7 @@ export default function Home() {
                 <h3 className="font-semibold mb-4 text-white">Follow</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link href="https://twitter.com/ramonprz_" className="text-white/60 hover:text-white transition-colors cursor-pointer flex items-center gap-2 justify-end">
+                    <Link href="https://x.com/pianolabs_ai" className="text-white/60 hover:text-white transition-colors cursor-pointer flex items-center gap-2 justify-end">
                       <XLogo className="w-4 h-4" />
                       Twitter
                     </Link>
