@@ -78,9 +78,26 @@ export default function Home() {
                 </Link>
               </div>
               <div className="flex items-center gap-4">
-                <Button variant="ghost" className="hidden sm:inline-flex rounded-xl">Compose</Button>
                 <Button variant="ghost" className="hidden sm:inline-flex rounded-xl">Learn</Button>
-                <Button variant="ghost" className="hidden sm:inline-flex rounded-xl">Updates</Button>
+                <Button 
+                  variant="ghost" 
+                  className="hidden sm:inline-flex rounded-xl"
+                  onClick={() => {
+                    document.getElementById('interactive-learning')?.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'center'
+                    });
+                  }}
+                >
+                  Compose
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  className="hidden sm:inline-flex rounded-xl"
+                  onClick={() => window.location.href = '/updates'}
+                >
+                  Updates
+                </Button>
                 <Button onClick={handleWaitlistClick} className="bg-white text-black hover:bg-white/90 rounded-xl transition-colors">
                   Join Waitlist
                 </Button>
@@ -101,14 +118,15 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-3xl scale-110" />
                 <div className="relative">
-                  <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl mb-4 tracking-tight relative">
+                  <h1 className="font-bold text-5xl sm:text-6xl md:text-7xl mb-6 tracking-tight relative">
                     <span className="relative inline-block">
                       Learn piano with<br className="hidden sm:block" /> natural&nbsp;language
-                      <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-violet-500 to-fuchsia-500 blur-[50px] opacity-30 scale-150" />
-                      <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-violet-400 to-fuchsia-400 blur-xl opacity-10" />
+                      <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-violet-500 to-fuchsia-500 blur-[80px] opacity-40 scale-150 animate-pulse" />
+                      <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-violet-400 to-fuchsia-400 blur-2xl opacity-20" />
+                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/80 [text-shadow:_0_1px_20px_rgb(255_255_255_/_20%)]" />
                     </span>
                   </h1>
-                  <p className="text-xl sm:text-2xl text-white/60 max-w-2xl mx-auto">
+                  <p className="text-2xl sm:text-3xl text-white/70 max-w-2xl mx-auto font-medium">
                     Your AI-assisted theory teacher<br className="hidden sm:block" /> and&nbsp;composer
                   </p>
                 </div>
@@ -117,7 +135,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-xl sm:text-2xl text-white/60 max-w-2xl mx-auto mb-8"
+                className="text-2xl sm:text-3xl text-white/70 max-w-2xl mx-auto mb-8"
               >
                 Transform your musical ideas into compositions through human language. Learn piano and music theory with your personal AI-powered teacher.
               </motion.p>
@@ -174,35 +192,11 @@ export default function Home() {
             >
               <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
               <Image
-                src="/placeholder.svg?height=1200&width=2400&text=&fontsize=0&bg=0f172a&colors[]=6366f1,a855f7,ec4899"
+                src="/aicomposer-pic-01.png"
                 alt="PianoLabs Interface Preview"
                 fill
                 className="object-cover"
               />
-              <motion.div 
-                style={{
-                  opacity: useTransform(
-                    scrollYProgress,
-                    [0.05, 0.15],
-                    [0, 1]
-                  ),
-                  y: useTransform(
-                    scrollYProgress,
-                    [0.05, 0.15],
-                    [20, 0]
-                  )
-                }}
-                transition={{ 
-                  duration: 2.5,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="absolute bottom-6 md:bottom-8 left-6 md:left-8 max-w-xl"
-              >
-                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Intuitive Composition Interface</h2>
-                <p className="text-base md:text-lg text-muted-foreground">
-                  A powerful yet simple interface that lets you focus on creativity while AI handles the complexity.
-                </p>
-              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -298,7 +292,7 @@ export default function Home() {
         </section>
 
         {/* Interactive Learning Section */}
-        <section className="py-16 relative px-6">
+        <section id="interactive-learning" className="py-32 relative px-6">
           <div className="relative z-10">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
               <ChatPreview />
@@ -343,10 +337,10 @@ export default function Home() {
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
-                className="relative h-[400px] rounded-xl overflow-hidden border border-white/5"
+                className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/5"
               >
                 <Image
-                  src="/placeholder.svg?height=800&width=600&text=Interactive+Piano&fontsize=32&bg=000000"
+                  src="/aicomposer-pic-01.png"
                   alt="Interactive Piano Interface"
                   fill
                   className="object-cover"
@@ -370,7 +364,7 @@ export default function Home() {
                       <MessageSquare className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-2">Ask Anything</h3>
+                      <h3 className="text-xl font-semibold mb-2">Ask Anything</h3>
                       <p className="text-muted-foreground">
                         "What chords work well in a jazz progression?" 
                         "How do I create tension in my melody?"
@@ -383,7 +377,7 @@ export default function Home() {
                       <PianoIcon className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-2">See It In Action</h3>
+                      <h3 className="text-xl font-semibold mb-2">See It In Action</h3>
                       <p className="text-muted-foreground">
                         Watch as chord progressions and scales come to life on our 
                         interactive piano. Perfect for visual learners.
@@ -395,7 +389,7 @@ export default function Home() {
                       <Wand2 className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-2">Understand Theory</h3>
+                      <h3 className="text-xl font-semibold mb-2">Understand Theory</h3>
                       <p className="text-muted-foreground">
                         Learn about music theory concepts like chords, keys and scales.
                       </p>
@@ -465,13 +459,23 @@ export default function Home() {
                 <h3 className="font-semibold mb-4 text-white">Product</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link href="/compose" className="text-white/60 hover:text-white transition-colors cursor-pointer">
-                      Compose
+                    <Link href="/learn" className="text-white/60 hover:text-white transition-colors cursor-pointer">
+                      Learn
                     </Link>
                   </li>
                   <li>
-                    <Link href="/learn" className="text-white/60 hover:text-white transition-colors cursor-pointer">
-                      Learn
+                    <Link 
+                      href="#" 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById('interactive-learning')?.scrollIntoView({ 
+                          behavior: 'smooth',
+                          block: 'center'
+                        });
+                      }}
+                      className="text-white/60 hover:text-white transition-colors cursor-pointer"
+                    >
+                      Compose
                     </Link>
                   </li>
                   <li>
